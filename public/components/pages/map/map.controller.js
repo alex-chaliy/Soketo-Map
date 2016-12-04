@@ -1,8 +1,23 @@
 'use strict';
 
 let mapController = ($scope, $http, $location, ui) => {
-	// include ui in scope to get access from template
 	$scope.ui = ui;
+
+	let socket = io('http://localhost:5414');
+
+	let MapObject = {};
+	MapObject.config = {
+		timeToNextRequest: 750
+	};
+	MapObject.get = () => {
+		socket.emit('getMapObjects');
+	}
+	socket.on('mapOBjects', (mapOBjectsData) => {
+		console.log(mapOBjectsData);
+	});
+	setInterval(() => {
+		MapObject.get();
+	}, MapObject.config.timeToNextRequest);
 }
 mapController.$inject = [
 	'$scope',

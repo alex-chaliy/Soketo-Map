@@ -10,9 +10,22 @@ let address = config.server.protocol + '://' + config.server.address + ':' + con
 
 const app = express();
 
-app.listen(config.server.port, () => {
+// app.listen(config.server.port, () => {
+// 	console.log('server listening at ' + address);
+// });
+
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+io.on('connection', (socket) => {
+	socket.on('getMapObjects', () => {
+		socket.emit('mapOBjects', { _id: '1' });
+	});
+});
+
+server.listen(config.server.port, () => {
 	console.log('server listening at ' + address);
 });
+
 
 /*******
 * Routes *
