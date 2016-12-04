@@ -5,7 +5,7 @@ body {
 	font-family: Roboto;
 	margin: 0;
 	padding: 0;
-	background: url(../img/map-50.png) center center no-repeat;
+	background: #333 url(../img/map-50.png) center center no-repeat;
 	background-size: cover;
 }
 
@@ -15,7 +15,7 @@ body {
 
 /* Map */
 	#mapid {
-		height: 180px;
+		height: 450px;
 	}
 /* end Map */
 
@@ -23,7 +23,7 @@ body {
 	.main-title {
 		text-align: center;
 		text-shadow: 1px 1px 2px rgba(0,0,0, 0.3);
-		color: #64637c;
+		color: #ddd;
 		font-size: 40px;
 		font-weight: 500;
 		margin: 30px 0;
