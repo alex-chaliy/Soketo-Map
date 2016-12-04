@@ -5,21 +5,6 @@ let mapController = ($scope, $http, $location, ui) => {
 
 	let socket = io('http://localhost:5414');
 
-	let MapObject = {};
-	MapObject.config = {
-		timeToNextRequest: 750111
-	};
-	MapObject.get = () => {
-		socket.emit('getMapObjects');
-	}
-	socket.on('mapOBjects', (mapOBjectsData) => {
-		console.log(mapOBjectsData);
-	});
-	// setInterval(() => {
-	// 	MapObject.get();
-	// }, MapObject.config.timeToNextRequest);
-	MapObject.get();
-
 
 /* Map */
 	let mapConfig = {
@@ -43,9 +28,30 @@ let mapController = ($scope, $http, $location, ui) => {
 		id: mapConfig.id
 	}).addTo(mymap);
 
-	L.marker([mapConfig.xx, mapConfig.yy]).addTo(mymap);
+	let markerDefault = L.marker([mapConfig.xx, mapConfig.yy]).addTo(mymap);
 /* end Map */
 
+
+	let markers = [];
+
+	let MapObject = {};
+
+	MapObject.renderAll = (mapObjectsData) => {
+		let i = 0;
+		mapObjectsData.forEach((el) => {
+			if(!markers[i]) {
+				markers[i] = L.marker([el.xx, el.yy]).addTo(mymap);
+			} else {
+				markers[i].setLatLng([el.xx, el.yy]);
+			}
+			i++;
+		});
+	}
+
+	socket.on('mapObjects', (mapObjectsData) => {
+		MapObject.renderAll(mapObjectsData);
+		console.log(mapObjectsData);
+	});
 }
 
 mapController.$inject = [
