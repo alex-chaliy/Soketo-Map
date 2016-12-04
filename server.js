@@ -29,8 +29,8 @@ let getRandInt = (min, max) => {
 }
 let moveEmit = () => {
 	mapObjectsData.forEach((el) => {
-		let randNumberX = getRandInt(0, 10);
-		let randNumberY = getRandInt(0, 10);
+		let randNumberX = getRandInt(0, 999);
+		let randNumberY = getRandInt(0, 999);
 		el.xx = el.xx + 0.00001 * Math.pow(-1, randNumberX);
 		el.yy = el.yy + 0.00001 * Math.pow(-1, randNumberY);
 	});
@@ -41,7 +41,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 let socketConfig = {
-	timeToNextResponse: 750
+	timeToNextResponse: 60
 };
 
 io.on('connection', (socket) => {

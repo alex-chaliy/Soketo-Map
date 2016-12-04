@@ -3,6 +3,10 @@
 let homeController = ($scope, $http, $location, ui) => {
 	// include ui in scope to get access from template
 	$scope.ui = ui;
+
+	$scope.redirTo = (url) => {
+		location.replace(url);
+	}
 }
 homeController.$inject = [
 	'$scope',

@@ -1,5 +1,21 @@
 <div id="change-on-menu-open" class="map">
 	<ng-include src="'components/partials/header.html'"></ng-include>
 
-	<h2 class="main-title">Socketo Map</h2>
+
+	<div class="container">
+		<h2 class="main-title">Socketo Map</h2>
+		<div class="card">
+			<div class="card-content">
+				<div class="input-field col s6">
+					<input placeholder="Введите API ключ" id="apiKey" type="text" class="validate">
+					<label class="active" for="apiKey"> Введите API ключ </label>
+		       </div>
+
+		       <div class="center-fluid">
+		       		<button ng-click="redirTo('/#/map')" class="waves-effect waves-light btn">Отправить</button> &nbsp;
+		       		<button ng-click="redirTo('/#/map')" class="waves-effect waves-light green btn">Пропустить</button>
+		       </div>
+			</div>
+		</div>
+	</div>
 </div>
