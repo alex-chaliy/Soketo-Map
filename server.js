@@ -14,11 +14,17 @@ const app = express();
 // 	console.log('server listening at ' + address);
 // });
 
+let mapObjects = [
+	{
+		_id: 'mo0'
+	}
+]
+
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 io.on('connection', (socket) => {
 	socket.on('getMapObjects', () => {
-		socket.emit('mapOBjects', { _id: '1' });
+		socket.emit('mapOBjects', mapObjects);
 	});
 });
 

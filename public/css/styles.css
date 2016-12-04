@@ -13,6 +13,12 @@ body {
 	box-sizing: border-box;
 }
 
+/* Map */
+	#mapid {
+		height: 180px;
+	}
+/* end Map */
+
 /* general elements */
 	.main-title {
 		text-align: center;
