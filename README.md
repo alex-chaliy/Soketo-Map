@@ -1,6 +1,8 @@
 # soketoMap
 The application displays the movement of objects on the map.
 
+![Soketo-Map](https://hsto.org/getpro/freelansim/allfiles/17/173/173105/67522e5c54.png)
+
 # How to install the app?
 1) Node.js v6.9 must be installed on your computer;
 
